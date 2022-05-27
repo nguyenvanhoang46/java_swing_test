@@ -159,7 +159,7 @@ public class ProductRepository {
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+           ex.printStackTrace();
         } finally {
             if (statement != null) {
                 try {
@@ -225,4 +225,11 @@ public class ProductRepository {
         return productList;
 
     }
+
+
+
+ 
+  
+
+   
 }
