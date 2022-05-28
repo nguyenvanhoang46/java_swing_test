@@ -24,94 +24,79 @@ import org.powermock.api.mockito.PowerMockito;
  * @author Admin
  */
 public class ProductRepositoryTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+
     ProductRepository productRepository;
     ProductRepository productRepositorySpy;
+    Product productTest;
+
     public ProductRepositoryTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        this.productTest = new Product();
+        this.productTest.setNameproduct("nameproduct");
+        this.productTest.setCategory_id(1);
+        this.productTest.setPrice(100);
+        this.productTest.setQuantity(50);
+        this.productTest.setUnit("unit");
+        this.productTest.setImage("test.jpg");
     }
-    
+
     @After
     public void tearDown() {
     }
 
-//    @Test
-//    public void testFindAll() {
-//        System.out.println("findAll");
-//        List<Product> expResult = null;
-//        List<Product> result = ProductRepository.findAll();
-//        assertEquals(expResult, result);
-//    }
-
-    @Test(expected = Exception.class)
-    public void testInsertWithNull() {
-        System.out.println("insert");
-        Product product = null;
-        productRepository.insert(product); // không thể chèn dữ liệu no vào trong dữ liệu
-    }
-    
-
     @Test()
     public void testInsertWithVali() {
-        System.out.println("insert");
-        Product product = new Product();
-        product.setNameproduct("nameproduct");
-        product.setCategory_id(1);
-        product.setPrice(100);
-        product.setQuantity(50);
-        product.setUnit("unit");
-        product.setImage("test.jpg");
-        productRepository.insert(product); // không thể chèn dữ liệu no vào trong dữ liệu
-    }
-    
-    @Test(expected = Exception.class)
-    public void testUpdateWithNull() {
-        System.out.println("update");
-        int id = 0;
-        Product pt = null;
-        productRepository.update(id, pt); // test trường hợp null
+        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+
+        assertEquals(this.productTest.getNameproduct(), newProduct.getNameproduct());
     }
 
     @Test()
     public void testUpdateWithVali() {
-        System.out.println("update");
-        int id = 3;
-        Product product = new Product();
-        product.setNameproduct("nameproduct");
-        product.setCategory_id(1);
-        product.setPrice(100);
-        product.setQuantity(50);
-        product.setUnit("unit");
-        product.setImage("test.jpg");
-        productRepository.update(id, product);
+        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+
+        Product updateProduct = this.productTest;
+        updateProduct.setNameproduct("Update 2");
+
+        updateProduct = productRepository.updateReturn(newProduct.getId(), updateProduct);
+
+        assertEquals("Update 2", updateProduct.getNameproduct());
     }
+
     @Test()
     public void testDeleteWithValiID() {
-        System.out.println("delete");
-        int id = 3;
-        productRepository.delete(id);
-    }
-    
-    
-    @Test(expected = Exception.class)
-    public void testDeleteWithNullID() {
-        System.out.println("delete");
-        int id = 0;
-        productRepository.delete(id);
+        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+
+        productRepository.delete(newProduct.getId());
+
+        Product product = productRepository.findById(newProduct.getId());
+
+        assertNull(product);
     }
 
+    @Test()
+    public void testSearchByName() {
+        List<Product> list = new ArrayList<>();
+        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
 
-    
+        list = productRepository.searchName(newProduct.getNameproduct());
+        
+        assertNotEquals(0, list.size());
+        
+        list = productRepository.searchName("test test test test");
+        
+        assertEquals(0, list.size());
+    }
+
 }
