@@ -139,7 +139,7 @@ public class ProductController {
         });
     }
 
-    private void insert() {
+    public void insert() {
         view.getBtnSave().addActionListener((ActionEvent e) -> {
             categoryList = CategoryRepository.findAll();
             if (view.getNameproduct().getText().isEmpty() || view.getPriceproduct().getText().isEmpty()) {
@@ -160,7 +160,7 @@ public class ProductController {
         });
     }
 
-    private void delete() {
+    public void delete() {
         view.getBtnDelete().addActionListener((ActionEvent e) -> {
             productList = ProductRepository.findAll();
             int index = view.getTableProduct().getSelectedRow();
@@ -192,7 +192,7 @@ public class ProductController {
         });
     }
 
-    private void update() {
+    public void update() {
         view.getBtnUpdate().addActionListener((ActionEvent e) -> {
             int index = view.getTableProduct().getSelectedRow();
 
@@ -216,7 +216,7 @@ public class ProductController {
                 newProduct.setImage(image);
 
                 ProductRepository.update(product.getId(), newProduct);
-                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+//                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
                 showProduct();
             }
         });
@@ -252,7 +252,7 @@ public class ProductController {
         return null;
     }
 
-    private void reset() {
+    public void reset() {
         view.getBtnReset().addActionListener((ActionEvent e) -> {
             view.getNameproduct().setText("");
             view.getPriceproduct().setText("");
