@@ -41,12 +41,12 @@ public class Main {
 //        HomeController homeController = new HomeController( new HomeView());
 //                UserHomeController userhomeController = new UserHomeController( new UserViewHome());
 
-            new LoginController(new LoginView());
+//            new LoginController(new LoginView());
 //        new ChartController(new ChartView());
 //        new SellController(new SellView());
 //        new StaffController(new StaffPanel());
 //        new StaffController(new StaffView());
-//        new ProductController(new ProductPanel());
+        new ProductController(new ProductPanel());
 //        new LoginController(new LoginView());
 //        new CustomerController(new CustomerView());
 //        new UserController(new UserView());

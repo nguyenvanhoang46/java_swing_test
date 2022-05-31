@@ -94,6 +94,51 @@ public class CategoryRepository {
             }
         }
     }
+    
+    
+        public static Category insertReturn(Category category) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //query
+            String sql = "insert into category(name) values(?)";
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, category.getName());
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                // Retrieves any auto-generated keys created as a result of executing this Statement object
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int id = generatedKeys.getInt(1);
+                    category.setId(id);
+                    return category;
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return null;
+    }
 
     public static void delete(int id) {
         Connection connection = null;
@@ -155,6 +200,43 @@ public class CategoryRepository {
             }
         }
     }
+    
+        public static Category updateReturn(int id, Category ctgr) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //query
+            String sql = "update category set name=? where id= ?";
+            statement = connection.prepareCall(sql);
+            statement.setString(1, ctgr.getName());
+            statement.setInt(2, id);
+            statement.execute();
+
+            return ctgr;
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return null;
+    }
 
     public static Category findById(int id) {
         Category cate = new Category();
@@ -169,6 +251,7 @@ public class CategoryRepository {
             ResultSet rSet = statement.executeQuery();
             while (rSet.next()) {
                cate = new Category(rSet.getInt("ID"), rSet.getString("NAME"));
+               return cate;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategoryRepository.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,7 +271,7 @@ public class CategoryRepository {
                 }
             }
         }
-        return cate;
+        return null;
 
     }
 

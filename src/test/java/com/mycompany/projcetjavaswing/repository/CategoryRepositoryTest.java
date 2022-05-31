@@ -5,6 +5,7 @@
 package com.mycompany.projcetjavaswing.repository;
 
 import com.mycompany.projcetjavaswing.model.Category;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,6 +20,8 @@ import static org.junit.Assert.*;
  */
 public class CategoryRepositoryTest {
     
+    Category categoryTest;
+    
     public CategoryRepositoryTest() {
     }
     
@@ -32,64 +35,62 @@ public class CategoryRepositoryTest {
     
     @Before
     public void setUp() {
+        this.categoryTest = new Category();
+        this.categoryTest.setName("nameCategory");
     }
     
     @After
     public void tearDown() {
+        
     }
 
-    @Test
-    public void testFindAll() {
-        System.out.println("findAll");
-        List<Category> expResult = null;
-        List<Category> result = CategoryRepository.findAll();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
+
 
     @Test
     public void testInsert() {
-        System.out.println("insert");
-        Category cr = null;
-        CategoryRepository.insert(cr);
-        fail("The test case is a prototype.");
+        Category newCategory = CategoryRepository.insertReturn(categoryTest);
+        
+        assertEquals(this.categoryTest.getName(), newCategory.getName());
     }
 
     @Test
     public void testDelete() {
-        System.out.println("delete");
-        int id = 0;
-        CategoryRepository.delete(id);
-        fail("The test case is a prototype.");
+        Category newCategory = CategoryRepository.insertReturn(categoryTest);
+        
+        CategoryRepository.delete(newCategory.getId());
+        
+        Category category = CategoryRepository.findById(newCategory.getId());
+        
+        assertNull(category);
     }
 
     @Test
     public void testUpdate() {
-        System.out.println("update");
-        int id = 0;
-        Category ctgr = null;
-        CategoryRepository.update(id, ctgr);
-        fail("The test case is a prototype.");
+        Category newCategory = CategoryRepository.insertReturn(categoryTest);
+        
+        Category updateCategory = this.categoryTest;
+        updateCategory.setName("Update 2");
+        
+        updateCategory = CategoryRepository.updateReturn(newCategory.getId(), updateCategory);
+        
+        assertEquals("Update 2", updateCategory.getName());
     }
 
-    @Test
-    public void testFindById() {
-        System.out.println("findById");
-        int id = 0;
-        Category expResult = null;
-        Category result = CategoryRepository.findById(id);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
+    
 
     @Test
     public void testFindCategory() {
-        System.out.println("findCategory");
-        String name = "";
-        List<Category> expResult = null;
-        List<Category> result = CategoryRepository.findCategory(name);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+       List<Category> list = new ArrayList<>();
+       
+       Category newCategory = CategoryRepository.insertReturn(categoryTest);
+       list = CategoryRepository.findCategory(newCategory.getName());
+       
+        assertNotEquals(0, list.size());
+        
+               list = CategoryRepository.findCategory("test Category");
+               
+               assertEquals(0, list.size());
+        
     }
     
 }

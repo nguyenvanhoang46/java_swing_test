@@ -104,6 +104,54 @@ public class UserRepository {
             }
         }
     }
+    
+        public static User insertReturn(User user) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //query
+            String sql = "insert into users(username, password, email, role) values(?, ?, ?, ?)";
+            statement = connection.prepareCall(sql);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getRole());
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows > 0) {
+                // Retrieves any auto-generated keys created as a result of executing this Statement object
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int id = generatedKeys.getInt(1);
+                    user.setId(id);
+                    return user;
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return null;
+    }
+
 
     public static void update(int id, User us) {
         Connection connection = null;
@@ -139,6 +187,48 @@ public class UserRepository {
         }
     }
 
+ 
+        public static User updateReturn(int id, User user) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //query
+            String sql = "update users set username=?, password=?, email=? role=? where id = ?";
+            statement = connection.prepareCall(sql);
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getRole());
+            statement.setInt(5, id);
+            statement.execute();
+
+
+            return user;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return null;
+    }
+    
     public static void delete(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -212,6 +302,50 @@ public class UserRepository {
             }
         }
         return userList;
+
+    }
+    
+        public static User findById(int id) {
+        User user = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            //query 
+            String sql = "select * from users where ID=" + id + "";
+            statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                user = new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("role")
+                );
+                
+                return user;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
 
     }
 

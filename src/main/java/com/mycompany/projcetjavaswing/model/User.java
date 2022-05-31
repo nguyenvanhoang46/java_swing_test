@@ -11,7 +11,7 @@ import javax.management.relation.Role;
  * @author Admin
  */
 public class User {
-    private long id;
+    private int id;
     private String username;
     private String password;
     private String email;
@@ -33,9 +33,6 @@ public class User {
     public User(String username, String password, String email, Role role) {
         
     }
-
-    
-    
     
     public enum ROLE {
         ROLE_USER, ROLE_ADMIN
@@ -44,7 +41,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String username, String password, String email, String role) {
+    public User(int id, String username, String password, String email, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -56,7 +53,7 @@ public class User {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
