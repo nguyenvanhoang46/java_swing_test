@@ -56,15 +56,15 @@ public class ProductRepositoryTest {
     }
 
     @Test()
-    public void testInsertWithVali() {
-        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+    public void testInsertProduct() {
+        Product newProduct = productRepository.insertReturn(productTest); 
 
         assertEquals(this.productTest.getNameproduct(), newProduct.getNameproduct());
     }
 
     @Test()
-    public void testUpdateWithVali() {
-        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+    public void testUpdateProduct() {
+        Product newProduct = productRepository.insertReturn(productTest); 
 
         Product updateProduct = this.productTest;
         updateProduct.setNameproduct("Update 2");
@@ -75,8 +75,8 @@ public class ProductRepositoryTest {
     }
 
     @Test()
-    public void testDeleteWithValiID() {
-        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+    public void testDeleteProduct() {
+        Product newProduct = productRepository.insertReturn(productTest); 
 
         productRepository.delete(newProduct.getId());
 
@@ -88,7 +88,7 @@ public class ProductRepositoryTest {
     @Test()
     public void testSearchByName() {
         List<Product> list = new ArrayList<>();
-        Product newProduct = productRepository.insertReturn(productTest); // không thể chèn dữ liệu no vào trong dữ liệu
+        Product newProduct = productRepository.insertReturn(productTest); 
 
         list = productRepository.searchName(newProduct.getNameproduct());
         

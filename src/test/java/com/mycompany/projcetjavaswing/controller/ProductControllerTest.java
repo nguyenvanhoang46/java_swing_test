@@ -46,16 +46,7 @@ public class ProductControllerTest {
     /**
      * Test of index method, of class ProductController.
      */
-    @Test
-    public void testIndex() {
-        System.out.println("index");
-        ProductController instance = null;
-        ProductPanel expResult = null;
-        ProductPanel result = instance.index();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of setUpListener method, of class ProductController.
@@ -125,19 +116,19 @@ public class ProductControllerTest {
     }
     
     
-    @Test
-    public void testProductDelete() {
-        ProductPanel productPanelTest = new ProductPanel();
-        ProductController prdController = new ProductController(productPanelTest);
-        
-        List<Product> listProduct = ProductRepository.findAll();
-        
-        
-        Product currProduct = listProduct.get(0);
-        
-        prdController.delete();
-        productPanelTest.getBtnDelete().doClick();
-        
-        
-    }
+//    @Test
+//    public void testProductDelete() {
+//        ProductPanel productPanelTest = new ProductPanel();
+//        ProductController prdController = new ProductController(productPanelTest);
+//        
+//        List<Product> listProduct = ProductRepository.findAll();
+//        
+//        
+//        Product currProduct = listProduct.get(0);
+//        
+//        prdController.delete();
+//        productPanelTest.getBtnDelete().doClick();
+//        
+//        
+//    }
 }

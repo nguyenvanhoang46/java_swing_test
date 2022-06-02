@@ -60,7 +60,7 @@ public class CategoryController {
         });
     }
 
-    private void insert() {
+    public void insert() {
         this.view.getBtnSave().addActionListener((ActionEvent e) -> {
 
             String name = view.getNameCategory().getText();
@@ -71,7 +71,7 @@ public class CategoryController {
         });
     }
 
-    private void delete() {
+    public void delete() {
         this.view.getBtnDelete().addActionListener((ActionEvent e) -> {
             categoryList = CategoryRepository.findAll();
             int index = view.getTableCategory().getSelectedRow();
@@ -103,7 +103,7 @@ public class CategoryController {
         });
     }
 
-    private void update() {
+    public void update() {
         this.view.getBtnUpdate().addActionListener((ActionEvent e) -> {
             int index = view.getTableCategory().getSelectedRow();
 
@@ -115,11 +115,19 @@ public class CategoryController {
                 newCategory.setName(name);
 
                 CategoryRepository.update(category.getId(), newCategory);
-                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+//                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
                 showCategory();
             }
         });
     }
+    
+    
+    public void reset() {
+        view.getBtnReset().addActionListener((ActionEvent e) -> {
+            view.getNameCategory().setText("");
+        });
+    }
+    
 
     private void tblStaff() {
         this.view.getTableCategory().addMouseListener(new MouseAdapter() {

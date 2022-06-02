@@ -59,6 +59,10 @@ public class StaffPanel extends javax.swing.JPanel {
     public JPanel getStaffPanel() {
         return StaffPanel;
     }
+
+    public KButton getBtnReset() {
+        return btnReset;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +85,7 @@ public class StaffPanel extends javax.swing.JPanel {
         btnUpdate = new com.k33ptoo.components.KButton();
         btnFind = new com.k33ptoo.components.KButton();
         btnDelete = new com.k33ptoo.components.KButton();
+        btnReset = new com.k33ptoo.components.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableStaff = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
@@ -106,7 +111,6 @@ public class StaffPanel extends javax.swing.JPanel {
         kGradientPanel4.setkEndColor(new java.awt.Color(255, 255, 255));
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\add-icon.png")); // NOI18N
         btnSave.setText("Thêm");
         btnSave.setkBorderRadius(30);
         btnSave.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -117,14 +121,12 @@ public class StaffPanel extends javax.swing.JPanel {
         btnSave.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnSave.setkStartColor(new java.awt.Color(255, 204, 102));
 
-        btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\Pencil-icon.png")); // NOI18N
         btnUpdate.setText("Sữa");
         btnUpdate.setkBorderRadius(30);
         btnUpdate.setkEndColor(new java.awt.Color(255, 204, 102));
         btnUpdate.setkForeGround(new java.awt.Color(0, 0, 0));
         btnUpdate.setkStartColor(new java.awt.Color(255, 204, 102));
 
-        btnFind.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\search-icon.png")); // NOI18N
         btnFind.setText("Tìm");
         btnFind.setkBorderRadius(30);
         btnFind.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -135,12 +137,21 @@ public class StaffPanel extends javax.swing.JPanel {
         btnFind.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnFind.setkStartColor(new java.awt.Color(255, 204, 102));
 
-        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\Close-2-icon.png")); // NOI18N
         btnDelete.setText("Xóa");
         btnDelete.setkBorderRadius(30);
         btnDelete.setkEndColor(new java.awt.Color(255, 204, 102));
         btnDelete.setkForeGround(new java.awt.Color(0, 0, 0));
         btnDelete.setkStartColor(new java.awt.Color(255, 204, 102));
+
+        btnReset.setText("Làm mới");
+        btnReset.setkBorderRadius(30);
+        btnReset.setkEndColor(new java.awt.Color(255, 204, 102));
+        btnReset.setkForeGround(new java.awt.Color(0, 0, 0));
+        btnReset.setkHoverColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkHoverEndColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkHoverForeGround(java.awt.Color.red);
+        btnReset.setkHoverStartColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkStartColor(new java.awt.Color(255, 204, 102));
 
         javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
         kGradientPanel4.setLayout(kGradientPanel4Layout);
@@ -149,6 +160,7 @@ public class StaffPanel extends javax.swing.JPanel {
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,15 +170,17 @@ public class StaffPanel extends javax.swing.JPanel {
         kGradientPanel4Layout.setVerticalGroup(
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TableStaff.setModel(new javax.swing.table.DefaultTableModel(
@@ -239,8 +253,6 @@ public class StaffPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setText("QUẢN LÝ NHÂN VIÊN");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\icons8-staff-24.png")); // NOI18N
-
         javax.swing.GroupLayout kGradientPanel7Layout = new javax.swing.GroupLayout(kGradientPanel7);
         kGradientPanel7.setLayout(kGradientPanel7Layout);
         kGradientPanel7Layout.setHorizontalGroup(
@@ -252,7 +264,7 @@ public class StaffPanel extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
         kGradientPanel7Layout.setVerticalGroup(
             kGradientPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,6 +324,7 @@ public class StaffPanel extends javax.swing.JPanel {
     private javax.swing.JTable TableStaff;
     private com.k33ptoo.components.KButton btnDelete;
     private com.k33ptoo.components.KButton btnFind;
+    private com.k33ptoo.components.KButton btnReset;
     private com.k33ptoo.components.KButton btnSave;
     private com.k33ptoo.components.KButton btnUpdate;
     private javax.swing.JLabel jLabel1;

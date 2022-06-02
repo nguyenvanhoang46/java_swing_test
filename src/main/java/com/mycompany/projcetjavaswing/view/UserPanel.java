@@ -63,6 +63,10 @@ public class UserPanel extends javax.swing.JPanel {
     public KButton getBtnUpdate() {
         return btnUpdate;
     }
+
+    public KButton getBtnReset() {
+        return btnReset;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,6 +92,7 @@ public class UserPanel extends javax.swing.JPanel {
         btnUpdate = new com.k33ptoo.components.KButton();
         btnFind = new com.k33ptoo.components.KButton();
         btnDelete = new com.k33ptoo.components.KButton();
+        btnReset = new com.k33ptoo.components.KButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableUser = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
@@ -121,7 +126,6 @@ public class UserPanel extends javax.swing.JPanel {
         kGradientPanel4.setkEndColor(new java.awt.Color(255, 255, 255));
         kGradientPanel4.setkStartColor(new java.awt.Color(255, 255, 255));
 
-        btnSave.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\add-icon.png")); // NOI18N
         btnSave.setText("Thêm");
         btnSave.setkBorderRadius(35);
         btnSave.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -131,8 +135,12 @@ public class UserPanel extends javax.swing.JPanel {
         btnSave.setkHoverForeGround(java.awt.Color.red);
         btnSave.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnSave.setkStartColor(new java.awt.Color(255, 204, 102));
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
-        btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\Pencil-icon.png")); // NOI18N
         btnUpdate.setText("Sửa");
         btnUpdate.setkBorderRadius(35);
         btnUpdate.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -143,7 +151,6 @@ public class UserPanel extends javax.swing.JPanel {
         btnUpdate.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnUpdate.setkStartColor(new java.awt.Color(255, 204, 102));
 
-        btnFind.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\search-icon.png")); // NOI18N
         btnFind.setText("Tìm ");
         btnFind.setkBorderRadius(35);
         btnFind.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -154,7 +161,6 @@ public class UserPanel extends javax.swing.JPanel {
         btnFind.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnFind.setkStartColor(new java.awt.Color(255, 204, 102));
 
-        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\Close-2-icon.png")); // NOI18N
         btnDelete.setText("Xóa");
         btnDelete.setkBorderRadius(35);
         btnDelete.setkEndColor(new java.awt.Color(255, 204, 102));
@@ -165,6 +171,16 @@ public class UserPanel extends javax.swing.JPanel {
         btnDelete.setkHoverStartColor(new java.awt.Color(170, 170, 170));
         btnDelete.setkStartColor(new java.awt.Color(255, 204, 102));
 
+        btnReset.setText("Làm mới");
+        btnReset.setkBorderRadius(35);
+        btnReset.setkEndColor(new java.awt.Color(255, 204, 102));
+        btnReset.setkForeGround(new java.awt.Color(0, 0, 0));
+        btnReset.setkHoverColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkHoverEndColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkHoverForeGround(java.awt.Color.red);
+        btnReset.setkHoverStartColor(new java.awt.Color(170, 170, 170));
+        btnReset.setkStartColor(new java.awt.Color(255, 204, 102));
+
         javax.swing.GroupLayout kGradientPanel4Layout = new javax.swing.GroupLayout(kGradientPanel4);
         kGradientPanel4.setLayout(kGradientPanel4Layout);
         kGradientPanel4Layout.setHorizontalGroup(
@@ -172,6 +188,7 @@ public class UserPanel extends javax.swing.JPanel {
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,15 +198,17 @@ public class UserPanel extends javax.swing.JPanel {
         kGradientPanel4Layout.setVerticalGroup(
             kGradientPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TableUser.setModel(new javax.swing.table.DefaultTableModel(
@@ -253,7 +272,7 @@ public class UserPanel extends javax.swing.JPanel {
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(kGradientPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,8 +287,6 @@ public class UserPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel6.setText("QUẢN LÝ TÀI KHOẢN");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\NetBeansProjects\\projcetJavaswing\\projcetJavaswing\\src\\main\\java\\Icon\\icons8-user-24.png")); // NOI18N
-
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
@@ -281,7 +298,7 @@ public class UserPanel extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,7 +309,7 @@ public class UserPanel extends javax.swing.JPanel {
                     .addGroup(kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel7)
                         .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout UserPanelLayout = new javax.swing.GroupLayout(UserPanel);
@@ -329,6 +346,10 @@ public class UserPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Email;
@@ -339,6 +360,7 @@ public class UserPanel extends javax.swing.JPanel {
     private javax.swing.JTextField Username;
     private com.k33ptoo.components.KButton btnDelete;
     private com.k33ptoo.components.KButton btnFind;
+    private com.k33ptoo.components.KButton btnReset;
     private com.k33ptoo.components.KButton btnSave;
     private com.k33ptoo.components.KButton btnUpdate;
     private javax.swing.JLabel jLabel1;

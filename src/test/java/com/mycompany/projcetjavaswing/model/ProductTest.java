@@ -4,8 +4,6 @@
  */
 package com.mycompany.projcetjavaswing.model;
 
-import com.mycompany.projcetjavaswing.controller.ProductController;
-import com.mycompany.projcetjavaswing.repository.ProductRepository;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,11 +16,6 @@ import static org.junit.Assert.*;
  * @author Admin
  */
 public class ProductTest {
-    
-    ProductRepository productRepository;
-    ProductRepository productRepositorySpy;
-
-    
     
     public ProductTest() {
     }
@@ -37,8 +30,6 @@ public class ProductTest {
     
     @Before
     public void setUp() {
-        productRepository = new ProductRepository();
-        
     }
     
     @After
@@ -48,14 +39,21 @@ public class ProductTest {
     /**
      * Test of getId method, of class Product.
      */
+    @Test
+    public void testGetId() {
+        Product instance = new Product();
+        instance.setId(1);
+        int expResult = 1;
+        int result = instance.getId();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setId method, of class Product.
      */
     @Test
-    public void testId() {
-        System.out.println("setId");
-        int id = 1;
+    public void testSetId() {
+        int id = 0;
         Product instance = new Product();
         instance.setId(id);
         assertEquals(id, instance.getId());
@@ -64,15 +62,21 @@ public class ProductTest {
     /**
      * Test of getNameproduct method, of class Product.
      */
-
+    @Test
+    public void testGetNameproduct() {
+        Product instance = new Product();
+        instance.setNameproduct("nameproduct");
+        String expResult = "nameproduct";
+        String result = instance.getNameproduct();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setNameproduct method, of class Product.
      */
     @Test
     public void testSetNameproduct() {
-        System.out.println("setNameproduct");
-        String nameproduct = "Pizz Hai San";
+        String nameproduct = "nameproduct";
         Product instance = new Product();
         instance.setNameproduct(nameproduct);
         assertEquals(nameproduct, instance.getNameproduct());
@@ -81,84 +85,98 @@ public class ProductTest {
     /**
      * Test of getCategory_id method, of class Product.
      */
-
+    @Test
+    public void testGetCategory_id() {
+        Product instance = new Product();
+        instance.setCategory_id(2);
+        int expResult = 2;
+        int result = instance.getCategory_id();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setCategory_id method, of class Product.
      */
     @Test
-    public void testCategory_id() {
-        System.out.println("setCategory_id");
-        int category_id = 211;
+    public void testSetCategory_id() {
+        int category_id = 0;
         Product instance = new Product();
         instance.setCategory_id(category_id);
-       assertEquals(category_id, instance.getCategory_id());
+        assertEquals(category_id, instance.getCategory_id());
     }
 
     /**
      * Test of getPrice method, of class Product.
      */
+    @Test
+    public void testGetPrice() {
+        Product instance = new Product();
+        instance.setPrice(30000);
+        int expResult = 30000;
+        int result = instance.getPrice();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setPrice method, of class Product.
      */
     @Test
-    public void testPrice() {
+    public void testSetPrice() {
         System.out.println("setPrice");
-        int price = 100;
+        int price = 0;
         Product instance = new Product();
         instance.setPrice(price);
         assertEquals(price, instance.getPrice());
-        // TODO review the generated test code and remove the default call to fail.
-    }
-    
-    @Test
-    public void testPriceWithNegation() {
-        System.out.println("setPrice");
-        int price = -100;
-        Product instance = new Product();
-         instance.setPrice(price);
-        assertEquals(price, instance.getPrice());
-       
     }
 
     /**
      * Test of getQuantity method, of class Product.
      */
-
+    @Test
+    public void testGetQuantity() {
+        Product instance = new Product();
+        instance.setQuantity(100);
+        int expResult = 100;
+        int result = instance.getQuantity();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setQuantity method, of class Product.
      */
     @Test
-    public void testQuantity() {
-        System.out.println("setQuantity");
-        int quantity = 12;
+    public void testSetQuantity() {
+        int quantity = 50;
         Product instance = new Product();
         instance.setQuantity(quantity);
         assertEquals(quantity, instance.getQuantity());
-
     }
 
     /**
      * Test of getUnit method, of class Product.
      */
+    @Test
+    public void testGetUnit() {
+        Product instance = new Product();
+        instance.setUnit("Cai");
+        String expResult = "Cai";
+        String result = instance.getUnit();
+        assertEquals(expResult, result);
+    }
 
     /**
      * Test of setUnit method, of class Product.
      */
     @Test
     public void testSetUnit() {
-        System.out.println("setUnit");
         String unit = "Cai";
         Product instance = new Product();
         instance.setUnit(unit);
         assertEquals(unit, instance.getUnit());
     }
 
-    /**
-     * Test of getImage method, of class Product.
-     */
+
+
 
     
 }

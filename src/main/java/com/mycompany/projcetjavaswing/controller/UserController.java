@@ -63,7 +63,7 @@ public class UserController {
         });
     }
 
-    private void insert() {
+    public void insert() {
         view.getBtnSave().addActionListener((ActionEvent e) -> {
             if (view.getUsername().getText().isEmpty() || view.getPassword().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nhập thông tin không đầy đủ");
@@ -96,6 +96,15 @@ public class UserController {
 
             }
 
+        });
+    }
+    
+    public void reset() {
+        view.getBtnReset().addActionListener((ActionEvent e) -> {
+            view.getUsername().setText("");
+            view.getPassword().setText("");
+            view.getEmail().setText("");
+            view.getRole().setToolTipText("");
         });
     }
 

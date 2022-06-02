@@ -37,8 +37,8 @@ public class UserRepositoryTest {
     public void setUp() {
         this.userTest = new User();
         this.userTest.setUsername("username");
-        this.userTest.setEmail("nguyenvanhoang@gmail.com");
-        this.userTest.setPassword("123123123");
+        this.userTest.setEmail("email.com");
+        this.userTest.setPassword("123123");
         this.userTest.setRole("role");
     }
     
@@ -48,13 +48,13 @@ public class UserRepositoryTest {
 
 
     @Test
-    public void testInsert() {
+    public void testInsertUser() {
         User newUser = UserRepository.insertReturn(userTest);
         assertEquals(this.userTest.getUsername(), newUser.getUsername());
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdateUser() {
         User newUser = UserRepository.insertReturn(userTest);
         
         User updateUser = this.userTest;
@@ -62,13 +62,13 @@ public class UserRepositoryTest {
         
         updateUser = UserRepository.updateReturn((int) newUser.getId(), updateUser);
         
-        assertEquals("update 2", updateUser.getUsername());
+        assertEquals("Update 2", updateUser.getUsername());
 
         
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteUser() {
         User newUser = UserRepository.insertReturn(userTest);
         
         UserRepository.delete((int) newUser.getId());

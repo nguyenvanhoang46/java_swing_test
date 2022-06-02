@@ -47,14 +47,14 @@ public class CategoryRepositoryTest {
 
 
     @Test
-    public void testInsert() {
+    public void testInsertCategory() {
         Category newCategory = CategoryRepository.insertReturn(categoryTest);
         
         assertEquals(this.categoryTest.getName(), newCategory.getName());
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteCategory() {
         Category newCategory = CategoryRepository.insertReturn(categoryTest);
         
         CategoryRepository.delete(newCategory.getId());
@@ -65,7 +65,7 @@ public class CategoryRepositoryTest {
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdateCategory() {
         Category newCategory = CategoryRepository.insertReturn(categoryTest);
         
         Category updateCategory = this.categoryTest;

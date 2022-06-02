@@ -61,7 +61,7 @@ public class StaffController {
 
     }
 
-    private void insert() {
+    public void insert() {
         this.view.getBtnSave().addActionListener((ActionEvent e) -> {
             if (view.getStaffname().getText().isEmpty() || view.getStaffGioitinh().getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nhập thông tin không đầy đủ");
@@ -99,7 +99,7 @@ public class StaffController {
         });
     }
 
-    private void detele() {
+    public void detele() {
         this.view.getBtnDelete().addActionListener((ActionEvent e) -> {
             staffList = StaffRepository.findAll();
             int index = view.getTableStaff().getSelectedRow();
@@ -114,7 +114,7 @@ public class StaffController {
         });
     }
 
-    private void update() {
+    public void update() {
         this.view.getBtnUpdate().addActionListener((ActionEvent e) -> {
             int index = view.getTableStaff().getSelectedRow();
 
@@ -130,12 +130,18 @@ public class StaffController {
                 newStaff.setPhone(phone);
 
                 StaffRepository.update(staff.getId(), newStaff);
-                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
+//                JOptionPane.showMessageDialog(null, "Cập nhật thành công");
                 showStaff();
             }
         });
     }
-
+    public void reset() {
+        view.getBtnReset().addActionListener((ActionEvent e) -> {
+            view.getStaffname().setText("");
+            view.getStaffGioitinh().setText("");
+            view.getStaffPhone().setText("");
+        });
+    }
     private void tblStaff() {
         view.getTableStaff().addMouseListener(new MouseAdapter() {
             @Override
