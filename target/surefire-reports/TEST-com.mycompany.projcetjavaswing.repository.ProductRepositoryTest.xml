@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" time="0.393" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" time="0.341" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="17.0.1+12-LTS-39"/>
@@ -61,8 +61,8 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testUpdateWithVali" time="0.251"/>
-  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testInsertWithVali" time="0.014"/>
-  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testDeleteWithValiID" time="0.096"/>
-  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testSearchByName" time="0.032"/>
+  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testUpdateProduct" time="0.288"/>
+  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testSearchByName" time="0.014"/>
+  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testInsertProduct" time="0.005"/>
+  <testcase classname="com.mycompany.projcetjavaswing.repository.ProductRepositoryTest" name="testDeleteProduct" time="0.034"/>
 </testsuite>

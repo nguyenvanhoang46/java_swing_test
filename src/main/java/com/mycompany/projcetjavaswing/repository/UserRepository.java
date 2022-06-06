@@ -104,8 +104,8 @@ public class UserRepository {
             }
         }
     }
-    
-        public static User insertReturn(User user) {
+
+    public static User insertReturn(User user) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -152,7 +152,6 @@ public class UserRepository {
         return null;
     }
 
-
     public static void update(int id, User us) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -187,8 +186,7 @@ public class UserRepository {
         }
     }
 
- 
-        public static User updateReturn(int id, User user) {
+    public static User updateReturn(int id, User user) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -203,7 +201,6 @@ public class UserRepository {
             statement.setString(4, user.getRole());
             statement.setInt(5, id);
             statement.execute();
-
 
             return user;
         } catch (SQLException ex) {
@@ -228,7 +225,7 @@ public class UserRepository {
 
         return null;
     }
-    
+
     public static void delete(int id) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -268,7 +265,7 @@ public class UserRepository {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             //query
-            String sql = "select * from user where username like ? ";
+            String sql = "select * from users where username like ? ";
             statement = connection.prepareStatement(sql);
             statement.setString(1, "%" + name + "%");
             ResultSet rs = statement.executeQuery();
@@ -304,8 +301,55 @@ public class UserRepository {
         return userList;
 
     }
-    
-        public static User findById(int id) {
+
+    public static User findUserByUsername(String name) {
+        List<User> userList = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            //query
+            String sql = "select * from users where username like ? ";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                User user = new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("role"));
+                userList.add(user);
+            }
+            if (userList.size() > 0) {
+                return userList.get(0);
+            }
+            return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserRepository.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        }
+        return null;
+    }
+
+    public static User findById(int id) {
         User user = null;
         Connection connection = null;
         PreparedStatement statement = null;
@@ -324,7 +368,7 @@ public class UserRepository {
                         rs.getString("email"),
                         rs.getString("role")
                 );
-                
+
                 return user;
             }
         } catch (SQLException ex) {
