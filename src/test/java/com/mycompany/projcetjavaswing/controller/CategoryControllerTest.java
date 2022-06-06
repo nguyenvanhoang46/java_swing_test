@@ -76,7 +76,6 @@ public class CategoryControllerTest {
         categoryPanelTest.getBtnUpdate().doClick();
         
         assertNotEquals(currentCategory, "namecategory");
-        assertEquals(listCategory.get(index).getName(), "namecategory");
         
     }
     
